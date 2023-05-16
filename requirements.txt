@@ -1,0 +1,6 @@
+setuptools
+cython
+build
+twine
+tomlkit
+semver

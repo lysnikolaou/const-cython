@@ -1,0 +1,10 @@
+.vscode/
+.python-version
+venv/
+
+dist/
+build/
+*.egg-info
+*.[ch]
+
+lib/libcythonconst/lsum.*
