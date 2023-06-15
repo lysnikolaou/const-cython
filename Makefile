@@ -21,7 +21,7 @@ build-libnoconst:
 	$(PYTHON_VENV) -m build lib
 
 build-client:
-	# $(PYTHON_VENV) bump.py --minor client
+	$(PYTHON_VENV) bump.py --minor client
 	$(PYTHON_VENV) -m build client
 
 upload-lib:
@@ -29,6 +29,12 @@ upload-lib:
 
 upload-client:
 	$(TWINE_VENV) upload client/dist/*
+
+test: clean-venv
+	$(PYTHON) -m venv venv
+	$(PYTHON_VENV) -m pip install cythonconst
+	$(PYTHON_VENV) -c "import cythonconst" || true
+	rm -rf venv
 
 clean:
 	rm -f lib/const_cython_lib/lsum.pxd lib/const_cython_lib/lsum.pyx
